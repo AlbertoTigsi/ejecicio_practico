@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-container
+    ports:
+      - "9898:9898"  # Mapear el puerto 9898 en el contenedor al puerto 9898 en el host
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-container:5432/bd_sistema_facturacion
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=hola
+      - SERVER_PORT=9898  # Asegúrate de que la variable de entorno coincida con el puerto del servidor
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:16.2
+    container_name: postgres-container
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hola
+      POSTGRES_DB: bd_sistema_facturacion
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
