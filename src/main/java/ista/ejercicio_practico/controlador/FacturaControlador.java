@@ -2,6 +2,9 @@ package ista.ejercicio_practico.controlador;
 
 import ista.ejercicio_practico.modelo.Factura;
 import ista.ejercicio_practico.servicio.FacturaServicio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,4 +55,13 @@ public class FacturaControlador {
        
           facturaServicio.eliminar(id);   
     }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Factura> listar() {
+       
+          return facturaServicio.listar();   
+    }
+
 }

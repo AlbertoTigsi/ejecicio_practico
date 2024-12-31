@@ -1,6 +1,9 @@
 package ista.ejercicio_practico.servicio;
 import ista.ejercicio_practico.modelo.Usuario;
 import ista.ejercicio_practico.repositorio.UsuarioRepositorio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +52,13 @@ public class UsuarioServicio {
             throw new RuntimeException("Error al eliminar la clasificación", e);
         }
     } 
+
+    public List<Usuario> listar() {
+        try {
+            return usuarioRepositorio.findAll();
+        } catch (Exception e) {
+            System.out.println("Error al listar los Usuarios: " + e.getMessage());
+            throw new RuntimeException("Error al listar los Usuarios", e);
+        }
+    }
 }

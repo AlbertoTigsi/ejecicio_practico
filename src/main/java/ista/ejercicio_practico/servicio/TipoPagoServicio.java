@@ -1,6 +1,9 @@
 package ista.ejercicio_practico.servicio;
 import ista.ejercicio_practico.modelo.TipoPago;
 import ista.ejercicio_practico.repositorio.TipoPagoRepositorio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,4 +55,13 @@ public class TipoPagoServicio {
             throw new RuntimeException("Error al eliminar la clasificación", e);
         }
     } 
+
+    public List<TipoPago> listar() {
+        try {
+            return tipoPagoRepositorio.findAll();
+        } catch (Exception e) {
+            System.out.println("Error al listar los TipoPagos: " + e.getMessage());
+            throw new RuntimeException("Error al listar los TipoPagos", e);
+        }
+    }
 }

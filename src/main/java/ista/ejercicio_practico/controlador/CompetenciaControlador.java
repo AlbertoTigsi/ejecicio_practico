@@ -2,6 +2,9 @@ package ista.ejercicio_practico.controlador;
 
 import ista.ejercicio_practico.modelo.Competencia;
 import ista.ejercicio_practico.servicio.CompetenciaServicio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,4 +53,13 @@ public class CompetenciaControlador {
        
           competenciaServicio.eliminar(id);   
     }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Competencia> listar() {
+       
+          return competenciaServicio.listar();   
+    }
+
 }

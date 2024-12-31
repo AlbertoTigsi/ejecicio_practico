@@ -1,6 +1,9 @@
 package ista.ejercicio_practico.servicio;
 import ista.ejercicio_practico.modelo.Proveedor;
 import ista.ejercicio_practico.repositorio.ProveedorRepositorio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,4 +51,13 @@ public class ProveedorServicio {
             throw new RuntimeException("Error al eliminar la clasificación", e);
         }
     } 
+
+    public List<Proveedor> listar() {
+        try {
+            return proveedorRepositorio.findAll();
+        } catch (Exception e) {
+            System.out.println("Error al listar los Proveedor: " + e.getMessage());
+            throw new RuntimeException("Error al listar los Proveedor", e);
+        }
+    }
 }

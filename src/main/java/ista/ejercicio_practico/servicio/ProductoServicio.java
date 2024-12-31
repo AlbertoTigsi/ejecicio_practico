@@ -1,6 +1,9 @@
 package ista.ejercicio_practico.servicio;
 import ista.ejercicio_practico.modelo.Producto;
 import ista.ejercicio_practico.repositorio.ProductoRepositorio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +52,13 @@ public class ProductoServicio {
             throw new RuntimeException("Error al eliminar la clasificación", e);
         }
     } 
+
+    public List<Producto> listar() {
+        try {
+            return productoRepositorio.findAll();
+        } catch (Exception e) {
+            System.out.println("Error al listar los Productos: " + e.getMessage());
+            throw new RuntimeException("Error al listar los Productos", e);
+        }
+    }
 }

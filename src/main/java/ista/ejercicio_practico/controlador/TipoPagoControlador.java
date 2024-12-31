@@ -2,6 +2,9 @@ package ista.ejercicio_practico.controlador;
 
 import ista.ejercicio_practico.modelo.TipoPago;
 import ista.ejercicio_practico.servicio.TipoPagoServicio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,4 +52,13 @@ public class TipoPagoControlador {
        
           tipoPagoServicio.eliminar(id);   
     }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    @ResponseBody
+    public List<TipoPago> listar() {
+       
+          return tipoPagoServicio.listar();   
+    }
+
 }

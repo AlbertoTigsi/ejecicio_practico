@@ -1,6 +1,9 @@
 package ista.ejercicio_practico.servicio;
 import ista.ejercicio_practico.modelo.ItemFactura;
 import ista.ejercicio_practico.repositorio.ItemFacturaRepositorio;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +52,13 @@ public class ItemFacturaServicio {
             throw new RuntimeException("Error al eliminar la clasificación", e);
         }
     } 
+
+    public List<ItemFactura> listar() {
+        try {
+            return itemFacturaRepositorio.findAll();
+        } catch (Exception e) {
+            System.out.println("Error al listar los ItemFacturas: " + e.getMessage());
+            throw new RuntimeException("Error al listar los ItemFacturas", e);
+        }
+    }
 }
