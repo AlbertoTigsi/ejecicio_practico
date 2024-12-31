@@ -1,9 +1,7 @@
 version: '3.8'
 services:
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: albertomonje/ejercicio_practico_backend:latest  # Usar la imagen desde Docker Hub
     container_name: backend-container
     ports:
       - "9898:9898"  # Mapear el puerto 9898 en el contenedor al puerto 9898 en el host
